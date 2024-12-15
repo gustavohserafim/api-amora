@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: amora
+      POSTGRES_PASSWORD: amora
+      POSTGRES_DB: amora_api
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_container
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://amora:amora@db:5432/amora_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+
+volumes:
+  postgres_data:
