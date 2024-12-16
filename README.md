@@ -13,17 +13,17 @@ https://docs.google.com/document/d/1RaPrdKd8-c7JJQYuIpNMuWfTiL1Qv7-3Qqiy6ixDfX0/
 - Python 3.12
 
 ## Como rodar
-Com o docker e docker-compose instalados, execute na raiz do projeto :
+Com o docker e docker-compose instalados, execute na raiz do projeto:
 - `docker-compose build`
 - `docker-compose up -d`
 
-Serão gerado dois containers, um com o banco de dados postgres e outro com a api.
+Serão gerados dois containers, um com o banco de dados postgres e outro com a api.
 ## Testes
 Arquivo contendo os testes:
 
 `tests/test_main.py`
 
-Com o python devidamente instalado na raiz do projeto execute:
+Com o python devidamente instalado e os containers da aplicação rodando, na raiz do projeto execute:
 
 - `python -m venv venv`
 - `pip install -r requirement.txt`
