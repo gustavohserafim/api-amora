@@ -1,4 +1,6 @@
-FROM python:3.12-slim
+FROM python:3.12
+
+RUN apt update -y
 
 WORKDIR /app
 
@@ -8,8 +10,12 @@ RUN python -m pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+WORKDIR /app/api
+
 COPY app/ .
+
+WORKDIR /app
 
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
