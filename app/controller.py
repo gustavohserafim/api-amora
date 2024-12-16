@@ -27,7 +27,7 @@ def create_realty(db: Session, realty: schemas.RealtyCreate, negotiation: schema
     db.commit()
     db.refresh(db_negotiation)
 
-    
+
     return {
         "id": db_realty.id,
         "address": db_realty.address,
